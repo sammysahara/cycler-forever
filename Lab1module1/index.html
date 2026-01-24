@@ -1,140 +1,151 @@
 <!-- first we need the basic set up structure with UTF-8 -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Survey over Heimdal Cybersecurity Solutions</title>
-  <!-- We can use a CSS style block here for basic styling, but we should use a CSS file separately for later labs-->
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: #f0f4f8;
-      color: #2d3748; 
-    }
-    h1 {
-      text-align: center;
-      color: #1a202c; 
-      margin-bottom: 10px;
-    }
-    .website-link {
-      display: block;
-      text-align: center;
-      margin: 20px 0;
-      font-size: 18px;
-      color: #4a5568; 
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .website-link:hover {
-      color: #2b6cb0; 
-      text-decoration: underline;
-    }
-    .logo-link {
-      display: block;
-      text-align: center;
-      margin: 20px 0;
-    }
-    .logo-link img {
-      max-width: 100%;
-      height: auto;
-      border: 1px solid #e2e8f0; 
-      border-radius: 8px;
-      background: white;
-      padding: 8px;
-    }
-    .question {
-      margin: 25px 0;
-      background: #ffffff; 
-      padding: 16px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #2d3748;
-    }
-    input[type="text"], select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 4px;
-      border: 1px solid #cbd5e0; 
-      border-radius: 6px;
-      box-sizing: border-box;
-      background-color: #f8fafc; 
-      color: #2d3748;
-    }
-    input[type="text"]:focus, select:focus {
-      outline: none;
-      border-color: #a0aec0; 
-    }
-    .radio-group label {
-      font-weight: normal;
-      margin-left: 24px;
-      display: flex;
-      align-items: center;
-      margin-top: 6px;
-    }
-    .radio-group input[type="radio"] {
-      margin-right: 8px;
-      accent-color: #4a5568; 
-    }
-  </style>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey over Heimdal Cybersecurity Solutions</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<!-- now we will start doing the questions for the survey-->
-<body>
-  <h1>Survey on Heimdal Cybersecurity Solutions</h1>
-  <!-- go to this link and review the UI before answering the survey-->
-  <a href="https://heimdalsecurity.com/enterprise-security/cybersecurity-solutions?partner=capterra-msp&utm_campaign=MSP&utm_source=GetApp&gdmcid=a7c69c8d-d4fd-449a-ba16-c7d8279adbbb"
-     class="website-link"
-     target="_blank"
-     rel="noopener noreferrer">
-    Visit Heimdal Security Website
-  </a>
+  <!-- now we will start doing the questions for the survey-->
+  <body>
+    <h1>Survey on Heimdal Cybersecurity Solutions</h1>
+    <!-- go to this link and review the UI before answering the survey-->
+    <a
+      href="https://heimdalsecurity.com/enterprise-security/cybersecurity-solutions?partner=capterra-msp&utm_campaign=MSP&utm_source=GetApp&gdmcid=a7c69c8d-d4fd-449a-ba16-c7d8279adbbb"
+      class="website-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Visit Heimdal Security Website
+    </a>
 
-  <!-- here we will put the image as a link to the website-->
-
-  <a href="https://heimdalsecurity.com/enterprise-security/cybersecurity-solutions?partner=capterra-msp&utm_campaign=MSP&utm_source=GetApp&gdmcid=a7c69c8d-d4fd-449a-ba16-c7d8279adbbb"
-     class="logo-link"
-     target="_blank"
-     rel="noopener noreferrer">
-    <img src="https://heimdalsecurity.com/wp-content/themes/heimdal/img/redesign-v3/logo.svg"
-         alt="Heimdal Security Logo" />
-  </a>
+    <!-- here we will put the image as a link to the website, it is not a logo, but we can use-->
+    <a
+      href="https://heimdalsecurity.com/enterprise-security/cybersecurity-solutions?partner=capterra-msp&utm_campaign=MSP&utm_source=GetApp&gdmcid=a7c69c8d-d4fd-449a-ba16-c7d8279adbbb"
+      class="ourimage-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        src="images/heimdalscreenshot1.png.png"
+        alt="Heimdal Cybersecurity Solutions home page"
+      />
+    </a>
 
     <!-- now let's put a text question-->
-  <div class="question">
-    <label for="predictability">Do buttons, menus, and flows work predictably?</label>
-    <input type="text" id="predictability" name="predictability" placeholder="Your response..." />
-  </div>
+    <div class="question">
+      <label for="predictability"
+        >Do buttons, menus, and flows work predictably?</label
+      >
+      <input
+        type="text"
+        id="predictability"
+        name="predictability"
+        placeholder="Your response..."
+      />
+    </div>
 
     <!-- here is the radio buttons question, it's a single choice question-->
-  <div class="question">
-    <label>How would you rate the readability of the website?</label>
-    <div class="radio-group">
-      <label><input type="radio" name="readability" value="excellent" /> Excellent</label>
-      <label><input type="radio" name="readability" value="good" /> Good</label>
-      <label><input type="radio" name="readability" value="fair" /> Fair</label>
-      <label><input type="radio" name="readability" value="poor" /> Poor</label>
+    <div class="question">
+      <label>How would you rate the readability of the website?</label>
+      <div class="radio-group">
+        <label
+          ><input type="radio" name="readability" value="excellent" />
+          Excellent</label
+        >
+        <label
+          ><input type="radio" name="readability" value="good" /> Good</label
+        >
+        <label
+          ><input type="radio" name="readability" value="fair" /> Fair</label
+        >
+        <label
+          ><input type="radio" name="readability" value="poor" /> Poor</label
+        >
+      </div>
     </div>
-  </div>
 
-      <!-- here is the dropdown list question, it's a single choice question-->
-  <div class="question">
-    <label for="aesthetics">How would you rate the aesthetics of the website?</label>
-    <select id="aesthetics" name="aesthetics">
-      <option value="">-- Please select --</option>
-      <option value="excellent">Excellent</option>
-      <option value="good">Good</option>
-      <option value="fair">Fair</option>
-      <option value="poor">Poor</option>
-    </select>
-  </div>
-</body>
+    <!-- here is the dropdown list question, it's a single choice question-->
+    <div class="question">
+      <label for="aesthetics"
+        >How would you rate the aesthetics of the website?</label
+      >
+      <select id="aesthetics" name="aesthetics">
+        <option value="">-- Please select --</option>
+        <option value="excellent">Excellent</option>
+        <option value="good">Good</option>
+        <option value="fair">Fair</option>
+        <option value="poor">Poor</option>
+      </select>
+    </div>
+
+    <!-- this one will be the selection question that has many boxes for the user to check-->
+    <div class="question">
+      <label
+        >Which aspects of the wesite's user interface caught most of your
+        attention? (You may select more than one option)</label
+      >
+      <div class="checkbox-group">
+        <label
+          ><input
+            type="checkbox"
+            name="ui-aspects"
+            value="The navigation bar"
+          />
+          Clear navigation
+        </label>
+        <label
+          ><input
+            type="checkbox"
+            name="ui-aspects"
+            value="The overall layout"
+          />
+          Clean overall layout</label
+        >
+        <label
+          ><input type="checkbox" name="ui-aspects" value="The color scheme" />
+          Appealing color scheme</label
+        >
+        <label
+          ><input
+            type="checkbox"
+            name="ui-aspects"
+            value="How responsive it is to user interactions"
+          />
+          Response time</label
+        >
+        <label
+          ><input type="checkbox" name="ui-aspects" value="The loading speed" />
+          Loading speed</label
+        >
+      </div>
+    </div>
+
+    <div class="question">
+      <label for="comments"
+        >Any additional comments or suggestions that you want to share?</label
+      >
+      <textarea
+        id="comments"
+        name="comments"
+        rows="5"
+        placeholder="Share your opinions about the UI of Heimdal Cybersecurity Solutions"
+        style="
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #cbd5e0;
+          border-radius: 6px;
+          box-sizing: border-box;
+          background-color: #f8fafc;
+          color: #2d3748;
+        "
+      ></textarea>
+    </div>
+
+    <div class="question">
+      <button type="button" class="submit-btn">Submit My Answers</button>
+    </div>
+  </body>
 </html>
