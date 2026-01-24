@@ -1,4 +1,4 @@
-/*let's make the style of out page lunar themed*/
+/*let's make the style of our page lunar themed*/
 :root {
   --moon-bg: rgb(15, 23, 42);
   --moon-surface: #1e293b;
@@ -13,20 +13,14 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* max-width: 800px; */
-  /* margin: 40px auto; */
   margin: 0;
-  /* padding: 20px; */
   background-color: var(--moon-bg);
   color: var(--moon-text);
   line-height: 1.6;
 
   /* optional addition: pretty background */
-  background-image: 
-    linear-gradient(
-      rgba(15, 23, 42, 0.8), 
-      rgba(15, 23, 42, 0.8)
-    ),  
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
     url(images/background.jpg);
 
   background-size: cover;
@@ -44,9 +38,6 @@ h1 {
 
 /* footer for signature at bottom of the page*/
 footer {
-  /* position: fixed; */
-  /* left: 0; */
-  /* bottom: 0; */
   width: 100%;
   background-color: #070e1d;
   color: #64748b;
@@ -61,32 +52,6 @@ footer {
   margin: 40px auto;
   padding: 20px;
   box-sizing: border-box;
-}
-
-/* for zoom on image */
-.zoom-cont {
-  overflow: hidden;
-  /* cursor: zoom-in; */
-  /* width: 100%;
-  max-width: 900px; */
-}
-
-.zoom-cont a {
-  display: block;
-  cursor: zoom-in;
-}
-
-.zoom-cont img {  
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease;
-  transform-origin: center;
-}
-
-
-.zoom-cont a:hover img {
-  transform: scale(1.5);
 }
 
 .website-link {

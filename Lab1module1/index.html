@@ -10,35 +10,100 @@
 
   <!-- now we will start doing the questions for the survey-->
   <body>
-    <div class = "survey">
+    <div class="survey">
       <h1>Survey on Heimdal Cybersecurity Solutions</h1>
-      <!-- go to this link and review the UI before answering the survey-->
+      <!-- the user can go to the link and review the UI before answering the survey-->
       <a
         href="https://heimdalsecurity.com/enterprise-security/cybersecurity-solutions?partner=capterra-msp&utm_campaign=MSP&utm_source=GetApp&gdmcid=a7c69c8d-d4fd-449a-ba16-c7d8279adbbb"
         class="website-link"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Visit Heimdal Security Website
+        Visit Heimdal Security Website clicking here or double click on the
+        image below
       </a>
 
       <!-- here we will put the image as a link to the website, it is not a logo, but we can use-->
-      <!-- <div class ="zoom-cont"> -->
-        <a
-          href="https://heimdalsecurity.com/enterprise-security/cybersecurity-solutions?partner=capterra-msp&utm_campaign=MSP&utm_source=GetApp&gdmcid=a7c69c8d-d4fd-449a-ba16-c7d8279adbbb"
-          class="ourimage-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          
-          <img
-            src="images/heimdalscreenshot1.png.png"
-            alt="Heimdal Cybersecurity Solutions home page"
-          />
-        </a>
-      <!-- </div> -->
+      <a
+        href="https://heimdalsecurity.com/enterprise-security/cybersecurity-solutions?partner=capterra-msp&utm_campaign=MSP&utm_source=GetApp&gdmcid=a7c69c8d-d4fd-449a-ba16-c7d8279adbbb"
+        class="ourimage-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="images/heimdalscreenshot1.png.png"
+          alt="Heimdal Cybersecurity Solutions home page"
+        />
+      </a>
+
+      <!-- I tried to implement this in the css file but it didn't work properly, however, it works when attached to the html directly-->
+      <style>
+        .zoom-container {
+          position: relative;
+          overflow: hidden;
+          cursor: zoom-in;
+        }
+
+        .zoom-container img {
+          transition: transform 0.3s ease;
+          transform-origin: center center;
+        }
+
+        .zoom-container:hover img {
+          transform: scale(2);
+        }
+
+        .zoom-container.zoomed {
+          cursor: zoom-out;
+        }
+
+        .zoom-container.zoomed img {
+          transform: scale(1);
+        }
+      </style>
+
+      <!-- this could be in a js file but for now we can just leave it here, we will also allow the user to double click the image to be sent to the website-->
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const imageLink = document.querySelector('.ourimage-link')
+          const linkUrl = imageLink.href
+
+          imageLink.addEventListener('click', function (e) {
+            e.preventDefault()
+          })
+
+          imageLink.addEventListener('dblclick', function (e) {
+            window.open(linkUrl, '_blank', 'noopener,noreferrer')
+          })
+        })
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const imageLink = document.querySelector('.ourimage-link')
+          const container = document.createElement('div')
+          container.className = 'zoom-container'
+
+          imageLink.parentNode.insertBefore(container, imageLink)
+          container.appendChild(imageLink)
+
+          const img = imageLink.querySelector('img')
+
+          container.addEventListener('mousemove', function (e) {
+            const rect = container.getBoundingClientRect()
+            const x = ((e.clientX - rect.left) / rect.width) * 100
+            const y = ((e.clientY - rect.top) / rect.height) * 100
+            img.style.transformOrigin = `${x}% ${y}%`
+          })
+
+          imageLink.addEventListener('click', function (e) {
+            e.preventDefault()
+            container.classList.toggle('zoomed')
+          })
+        })
+      </script>
+
       <!-- now let's put a text question-->
-      <div class="question">  
+      <div class="question">
         <label for="predictability"
           >Do buttons, menus, and flows work predictably?</label
         >
@@ -108,7 +173,11 @@
             Clean overall layout</label
           >
           <label
-            ><input type="checkbox" name="ui-aspects" value="The color scheme" />
+            ><input
+              type="checkbox"
+              name="ui-aspects"
+              value="The color scheme"
+            />
             Appealing color scheme</label
           >
           <label
@@ -120,7 +189,11 @@
             Response time</label
           >
           <label
-            ><input type="checkbox" name="ui-aspects" value="The loading speed" />
+            ><input
+              type="checkbox"
+              name="ui-aspects"
+              value="The loading speed"
+            />
             Loading speed</label
           >
         </div>
@@ -151,10 +224,11 @@
         <button type="button" class="submit-btn">Submit My Answers</button>
       </div>
     </div>
-    
+
     <footer>
-      <p>Website designed by Ahmed Salma, Steven Feng Peng, and Sahara Sammy ☆</p>
+      <p>
+        Website designed by Ahmed Salma, Steven Feng Peng, and Sahara Sammy ☆
+      </p>
     </footer>
-    
   </body>
 </html>
