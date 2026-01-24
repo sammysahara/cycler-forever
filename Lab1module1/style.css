@@ -42,7 +42,7 @@ h1 {
   letter-spacing: 0.5px;
 }
 
-/* fixed footer for signature at bottom of the page*/
+/* footer for signature at bottom of the page*/
 footer {
   /* position: fixed; */
   /* left: 0; */
@@ -63,6 +63,31 @@ footer {
   box-sizing: border-box;
 }
 
+/* for zoom on image */
+.zoom-cont {
+  overflow: hidden;
+  /* cursor: zoom-in; */
+  /* width: 100%;
+  max-width: 900px; */
+}
+
+.zoom-cont a {
+  display: block;
+  cursor: zoom-in;
+}
+
+.zoom-cont img {  
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+
+.zoom-cont a:hover img {
+  transform: scale(1.5);
+}
 
 .website-link {
   display: block;
