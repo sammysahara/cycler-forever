@@ -202,19 +202,40 @@
           >
         </div>
       </div>
+      
         <div class="question">
-          <div class="question-number"> Question 5 of 6 </div>
-          <img src= "images/Menu.png" width="360" height ="250" class="center-img" alt="Navigation Menu Image">
-        
-  <label>
-    Based on this image, how easy does it look to find the information you need on the website?
+  <div class="question-number"> Question 5 of 6 </div>
+
+  <label class="image-question-title">
+    Based on the homepage, what seems to be Heimdal's main promise to customers?
+    <span class="hint-text">(Select one or more icons)</span>
   </label>
-  <div class="radio-group">
-    <label><input type="radio" name="menu_usability" value="very_easy" /> Very easy</label>
-    <label><input type="radio" name="menu_usability" value="easy" /> Easy</label>
-    <label><input type="radio" name="menu_usability" value="neutral" /> Neutral</label>
-    <label><input type="radio" name="menu_usability" value="hard" /> Hard</label>
-    <label><input type="radio" name="menu_usability" value="very_hard" /> Very hard</label>
+
+  <div class="icon-grid">
+
+    <!-- Option A -->
+    <label class="icon-tile">
+      <input type="checkbox" name="heimdal_promise[]" value="consolidation">
+      <img src="images/consolidation-empty.png" alt="Consolidation icon">
+    </label>
+    
+    <!-- Option B -->
+    <label class="icon-tile">
+      <input type="checkbox" name="heimdal_promise[]" value="compliance">
+      <img src="images/compliance-empty.png" alt="Compliance icon">
+    </label>
+  
+    <!-- Option C -->
+    <label class="icon-tile">
+      <input type="checkbox" name="heimdal_promise[]" value="protection">
+      <img src="images/protection-empty.png" alt="Protection icon">
+    </label>    
+    
+    <!-- Option D -->
+    <label class="icon-tile">
+      <input type="checkbox" name="heimdal_promise[]" value="efficiency">
+      <img src="images/efficiency-empty.png" alt="Efficiency icon">
+      </label>
   </div>
 </div>
       
