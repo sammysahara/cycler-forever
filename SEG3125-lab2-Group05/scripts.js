@@ -95,6 +95,11 @@ function savePreferences() {
         document.body.classList.remove('large-text');
     }
 
+    // refresh products to apply preferences immediately
+    if (document.getElementById("products-grid")) {
+      renderProducts();
+    }
+
     alert('Your preferences have been saved!');
 }
 
@@ -388,6 +393,13 @@ function renderProducts() {
       No products match your filters.
     </p>`;
   }
+
+  // open product detail when image is clicked
+  grid.querySelectorAll("[data-open-product]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      openProductPage(Number(btn.dataset.openProduct));
+    });
+  });
 }
 
 function productCardHTML(p) {
@@ -396,7 +408,9 @@ function productCardHTML(p) {
 
   return `
     <div class="product-card">
-      <img class="product-image" src="${p.image}" alt="${p.name}">
+      <button class="product-image-btn" data-open-product="${p.id}" type="button">
+        <img class="product-image" src="${p.image}" alt="${p.name}">
+      </button>
       <div class="product-body">
         <div class="product-name">${p.name}</div>
 
@@ -409,6 +423,54 @@ function productCardHTML(p) {
       </div>
     </div> `;
 }
+
+// to render a page for product
+function openProductPage(productId) {
+  const p = products.find(x => x.id === productId);
+  if (!p) return;
+
+  const detail = document.getElementById("product-detail");
+  if (!detail) return;
+
+  detail.innerHTML = `
+    <div class="product-detail-wrapper">
+      <div class="product-detail-card">
+
+        <div class="product-detail-image">
+          <img src="${p.image}" alt="${p.name}">
+        </div>
+
+        <div class="product-detail-info">
+          <button id="back-to-products" type="button">← Back to products</button>
+
+          <h2>${p.name}</h2>
+          <p><strong>Price:</strong> $${p.price.toFixed(2)}</p>
+          <p><strong>Category:</strong> ${p.category}</p>
+          <p><strong>Organic:</strong> ${p.organic ? "Yes" : "No"}</p>
+          <p><strong>Gluten-free:</strong> ${p.glutenFree ? "Yes" : "No"}</p>
+          <p><strong>Vegetarian:</strong> ${p.vegetarian ? "Yes" : "No"}</p>
+
+          <button class="btn-add-cart" id="detail-add-${p.id}" type="button">
+            Add to cart
+          </button>
+        </div>
+
+      </div>
+    </div>`;
+
+  // wire buttons on the detail page
+  document.getElementById("back-to-products")?.addEventListener("click", () => {
+    showSection("products-section");
+  });
+
+  document.getElementById(`detail-add-${p.id}`)?.addEventListener("click", () => {
+    addToCart(p.id);
+  });
+
+  // show the detail section
+  showSection("product-detail-section");
+}
+
 function addToCart(productId) {
   const item = cart.find(x => x.productId === productId);
   if (item) item.qty += 1;

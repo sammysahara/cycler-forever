@@ -361,6 +361,14 @@ footer p {
   transition: transform 0.2s ease;
 }
 
+.product-image-btn {
+  border: none;
+  padding: 0;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+}
+
 .product-card:hover {
   transform: translateY(-4px);
 }
@@ -399,6 +407,31 @@ footer p {
   color: var(--dark-bg);
   font-size: 1.1rem;
 }
+
+.product-detail-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.product-detail-card {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+.product-detail-image img {
+  width: 320px;
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.product-detail-info {
+  flex: 1;
+}
+
 
 .badge {
   display: inline-block;
