@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go5 - Online Grocery Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- our title and navigation bar will be in the header -->
+    <header>
+        <div class="header-container">
+            <h1 class="store-name">Go5!</h1>
+            <nav>
+                <button id="nav-customer" class="nav-btn active">Customer Info</button>
+                <button id="nav-products" class="nav-btn">Products</button>
+                <button id="nav-cart" class="nav-btn">Cart <span id="cart-count">(0)</span></button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- main content -->
+    <main>
+        <!-- customer page -->
+        <section id="customer-section" class="page-section active">
+            <div class="container">
+                <h2>Welcome to Go5!</h2>
+                <p class="section-description">Please tell us about your dietary preferences so we can personalize your shopping experience.</p>
+                
+                <div class="customer-form">
+                    <div class="form-group">
+                        <h3>Dietary Restrictions</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="vegetarian" name="dietary">
+                                <span>I am vegetarian (no meat or fish)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="gluten-free" name="dietary">
+                                <span>I have gluten intolerance (no wheat products)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h3>Product Preferences</h3>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" id="organic" name="preference" value="organic">
+                                <span>I prefer organic products</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" id="non-organic" name="preference" value="non-organic">
+                                <span>I prefer non-organic products</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" id="no-preference" name="preference" value="all" checked>
+                                <span>No preference</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h3>Accessibility Options</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="large-text">
+                                <span>Enable larger text (for better readability)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button id="save-preferences" class="btn-primary">Save Preferences</button>
+                </div>
+            </div>
+        </section>
+        <!--products page-->
+        <section id="products-section" class="page-section">
+            <div class="container">
+                <h2>Products</h2>
+                <p class="section-description"> Browse items matched to your preferences.</p>
+
+                <!--filters / Search -->
+                <div class="products-toolbar">
+                    <input id="product-search" class="search-input" type="text" placeholder="Search products"/>
+                    <select id="category-filter" class="select-input">
+                        <option value="all">All categories</option>
+                        <option value="fruit">Fruit</option>
+                        <option value="vegetable">Vegetable</option>
+                        <option value="dairy">Dairy</option>
+                        <option value="pantry">Pantry</option>
+                        <option value="bakery">Bakery</option>
+                        <option value="meat">Meat</option>
+                        <option value="frozen">Frozen</option>
+                        <option value="protein">Protein</option>
+                        <option value="grain">Grain</option>
+                        <option value="seafood">Seafood</option>
+                    </select>
+                    <button id="reset-filters" class="btn-secondary" type="button">Reset</button>
+                </div>
+
+                <div id="products-grid" class="products-grid">
+                </div>
+            </div>
+        </section>
+        <!-- for individual products -->
+        <section id="product-detail-section" class="page-section">
+            <div id="product-detail"></div>
+        </section>
+        <!-- our cart page -->
+        <section id="cart-section" class="page-section">
+            <div class="container">
+                <h2>Your Cart</h2>
+                <p class="section-description">Review your items and total.</p>
+
+                <div id="cart-content" class="cart-content"></div>
+                
+                <div class="cart-summary">
+                    <button id="clear-cart" class="clear-items-link" type="button">Clear items</button>
+                    <div class="cart-total-right">
+                        <span class="total-labe"l>Total :</span>
+                        <span id="cart-total" class="total-amount">$0.00</span>
+                    </div>
+                </div>                  
+    </main>
+
+    <!-- we will put the signature here, Sahara knows what to write on it -->
+    <footer>
+        <p>Webite designed by Steven Feng, Salma Ahmed, and Sahara Sammy</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
