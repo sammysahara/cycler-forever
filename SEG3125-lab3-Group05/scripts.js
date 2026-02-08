@@ -64,6 +64,48 @@ function showSection(sectionId) {
   } else if (sectionId === 'cart-section') {
     document.getElementById('nav-cart').classList.add('active')
   }
+
+  // for breadcrumbs
+  if (sectionId === "customer-section") {
+    updateBreadcrumbs([
+      { label: "Home" }
+    ]);
+  }
+
+  if (sectionId === "products-section") {
+    updateBreadcrumbs([
+      { label: "Home", section: "customer-section" },
+      { label: "Products" }
+    ]);
+  }
+
+  if (sectionId === "cart-section") {
+    updateBreadcrumbs([
+      { label: "Home", section: "customer-section" },
+      { label: "Cart" }
+    ]);
+  }  
+}
+
+// to update breadcrumbs
+function updateBreadcrumbs(path) {
+  const container = document.getElementById("breadcrumbs");
+  if (!container) return;
+
+  container.innerHTML = path.map((item, index) => {
+    if (item.section) {
+      return `<span data-section="${item.section}">${item.label}</span>`;
+    } else {
+      return `<span>${item.label}</span>`;
+    }
+  }).join(" / ");
+
+  // attach click events
+  container.querySelectorAll("[data-section]").forEach(el => {
+    el.addEventListener("click", () => {
+      showSection(el.dataset.section);
+    });
+  });
 }
 
 // customer section functionality
@@ -564,6 +606,13 @@ function openProductPage(productId) {
     ?.addEventListener('click', () => {
       addToCart(p.id)
     })
+  
+  // breadcrumbs
+  updateBreadcrumbs([
+    { label: "Home", section: "customer-section" },
+    { label: "Products", section: "products-section" },
+    { label: p.name }
+  ]);
 
   // show the detail section
   showSection('product-detail-section')
@@ -640,7 +689,12 @@ function renderCart() {
     })
     .join('')
 
-  cartTotalEl.textContent = `$${total.toFixed(2)}`
+  // get tip
+  const tipPercent = parseFloat(
+    document.querySelector('input[name="tip"]:checked')?.value || 0
+  );
+  const finalTotal = total*(1 + tipPercent)
+  cartTotalEl.textContent = `$${finalTotal.toFixed(2)}`
 
   // hook buttons
   cartContent.querySelectorAll('[data-action]').forEach((btn) => {
@@ -653,6 +707,11 @@ function renderCart() {
       if (action === 'remove') removeFromCart(id)
     })
   })
+  
+  // recalculate total when tip changes
+  document.querySelectorAll('input[name="tip"]').forEach(radio => {
+    radio.addEventListener("change", renderCart);
+  });
 }
 
 function changeQty(productId, delta) {

@@ -16,6 +16,7 @@
                 <button id="nav-products" class="nav-btn">Products</button>
                 <button id="nav-cart" class="nav-btn">Cart <span id="cart-count">(0)</span></button>
             </nav>
+            <div id="breadcrumbs" class="breadcrumbs"></div>
         </div>
     </header>
 
@@ -135,6 +136,25 @@
 
                 <div id="cart-content" class="cart-content"></div>
                 
+                <div class="tip-section">
+                    <h3>Add a Tip!</h3>
+                    <label class="radio-label">
+                        <input type="radio" name="tip" value="0" checked>
+                        <span>0%</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="tip" value="10">
+                        <span>10%</span>
+                    </label>  
+                    <label class="radio-label">
+                        <input type="radio" name="tip" value="15">
+                        <span>15%</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="tip" value="20">
+                        <span>20%</span>
+                    </label>                                    
+                </div>
                 <div class="cart-summary">
                     <button id="clear-cart" class="clear-items-link" type="button">Clear Cart</button>
                     <div class="cart-total-right">

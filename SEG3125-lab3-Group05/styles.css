@@ -121,6 +121,21 @@ nav {
   font-weight: 700;
 }
 
+/* breadcrumbs nav */
+.breadcrumbs {
+  margin: 20px;
+  font-size: 0.95rem;
+  color: var(white);
+}
+
+.breadcrumbs span {
+  cursor: pointer;
+}
+
+.breadcrumbs span:hover {
+  text-decoration: underline;
+}
+
 /* putting down here the regular main content */
 main {
   min-height: calc(100vh - 250px);
