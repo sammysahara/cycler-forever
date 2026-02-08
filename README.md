@@ -1,11 +1,8 @@
-This generic file contains all the labs inside.
+# SEG3125-lab2-Group05
+This is lab 3
 
-Each lab is named accordingly as the instrucitons asked.
+The lab consists on improving lab 2, taking the gorcery store and upgrade the UI and additional features it must have
 
-Each lab is separated in folders
+The website is published in Sahara Sammy's GitHub Pages at https://sammysahara.github.io/GO5-grocery/, and the contributions can be seen on her repository or mine (Stfeng333)
 
-Contributions to the labs can be seen through this repository (https://github.com/Stfeng333/SEG3125--labs-group05) or Sahara's (https://github.com/sammysahara).
-
-Al the websites in HTML will be published in GitHub Pages of Sahara Sammy (https://github.com/sammysahara).
-
-The TA has been invited as a collaborator
+The preferences and dietary restrictions will save to your browser's local storage. To delete this, press F12, go to Application, then on the left panel look for Storage, then open Local storage, and you will be able to delete the saved preferences.
