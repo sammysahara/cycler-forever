@@ -1,4 +1,4 @@
-# SEG3125-lab2-Group05
+# SEG3125-lab3-Group05
 This is lab 3
 
 The lab consists on improving lab 2, taking the gorcery store and upgrade the UI and additional features it must have
