@@ -483,6 +483,208 @@ function debugState() {
     console.log('Selected Staff:', selectedStaff);
     console.log('===========================');
 }
+let bookingDate = null; // Date object
+let bookingTime = "";   // string like "10:30"
+
+// Convert days to numbers
+function dayNameToIndex(dayName) {
+  const map = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+  return map[dayName] ?? null;
+}
+
+function parseAvailabilityToAllowedDays(availabilityStr) {
+  const parts = availabilityStr.split('-').map(s => s.trim());
+  if (parts.length !== 2) return new Set([0,1,2,3,4,5,6]);
+
+  const start = dayNameToIndex(parts[0]);
+  const end = dayNameToIndex(parts[1]);
+  if (start === null || end === null) return new Set([0,1,2,3,4,5,6]);
+
+  const allowed = new Set();
+  let i = start;
+  while (true) {
+    allowed.add(i);
+    if (i === end) break;
+    i = (i + 1) % 7;
+  }
+  return allowed;
+}
+
+// Format date as YYYY-MM-DD
+function ymd(d) {
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+// Month label like "February 2026"
+function monthLabel(d) {
+  return d.toLocaleString(undefined, { month: "long", year: "numeric" });
+}
+
+// Initialize calendar when entering Step 3
+function initStep3Calendar() {
+  const calDays = document.getElementById("calDays");
+  const calMonthLabelEl = document.getElementById("calMonthLabel");
+  const calPrev = document.getElementById("calPrev");
+  const calNext = document.getElementById("calNext");
+
+  const selectedDateText = document.getElementById("selectedDateText");
+  const timeSelect = document.getElementById("timeSelect");
+  const scheduleSummary = document.getElementById("scheduleSummary");
+  const nextToStep4 = document.getElementById("nextToStep4");
+
+  // Step 3 summary elements
+  const step3BookingSummary = document.getElementById("step3BookingSummary");
+  const step3SummaryService = document.getElementById("step3SummaryService");
+  const step3SummaryStaff = document.getElementById("step3SummaryStaff");
+  const step3SummaryPrice = document.getElementById("step3SummaryPrice");
+  const step3SummaryDuration = document.getElementById("step3SummaryDuration");
+  const step3SummaryDate = document.getElementById("step3SummaryDate");
+  const step3SummaryTime = document.getElementById("step3SummaryTime");
+
+  // Safety check
+  if (!calDays || !calMonthLabelEl || !calPrev || !calNext) return;
+
+  // Reset selection every time you enter step 3
+  bookingDate = null;
+  bookingTime = "";
+  timeSelect.innerHTML = `<option value="" selected disabled>Select a time</option>`;
+  timeSelect.disabled = true;
+  nextToStep4.disabled = true;
+  if (step3BookingSummary) step3BookingSummary.style.display = "none";
+
+  const allowedDays = selectedStaff
+    ? parseAvailabilityToAllowedDays(selectedStaff.availability)
+    : new Set([0,1,2,3,4,5,6]);
+
+  // Current month being displayed
+  let view = new Date();
+  view.setDate(1);
+  view.setHours(0, 0, 0, 0);
+
+  // Today (disable past)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  function renderCalendar() {
+    calMonthLabelEl.textContent = monthLabel(view);
+    calDays.innerHTML = "";
+
+    const year = view.getFullYear();
+    const month = view.getMonth();
+
+    const firstDow = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    // Empty grid cells before day 1
+    for (let i = 0; i < firstDow; i++) {
+      const blank = document.createElement("div");
+      blank.style.height = "3rem";
+      calDays.appendChild(blank);
+    }
+
+    // Day buttons
+    for (let day = 1; day <= daysInMonth; day++) {
+      const d = new Date(year, month, day);
+      d.setHours(0, 0, 0, 0);
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "btn cal-btn";
+      btn.textContent = day;
+
+      const isPast = d < today;
+      const isAllowed = allowedDays.has(d.getDay());
+      if (isPast || !isAllowed) btn.disabled = true;
+
+      if (bookingDate && ymd(d) === ymd(bookingDate)) {
+        btn.classList.add("selected");
+      }
+
+      btn.addEventListener("click", () => {
+        bookingDate = d;
+        bookingTime = "";
+        timeSelect.disabled = false;
+
+        // Fill time slots
+        const slots = ["09:00","09:30","10:00","10:30","11:00","11:30",
+          "13:30","14:00","14:30","15:00","15:30","16:00",
+          "16:30","17:00","17:30"];
+
+        timeSelect.innerHTML = `<option value="" selected disabled>Select a time</option>`;
+        slots.forEach(t => {
+          const opt = document.createElement("option");
+          opt.value = t;
+          opt.textContent = t;
+          timeSelect.appendChild(opt);
+        });
+
+        updateSummary();
+        renderCalendar();
+      });
+
+      calDays.appendChild(btn);
+    }
+  }
+
+  function updateSummary() {
+    const techInfo = selectedStaff ? selectedStaff.availability : "All days";
+
+    // No date
+    if (!bookingDate) {
+      selectedDateText.textContent = `No date selected (Tech availability: ${techInfo})`;
+      scheduleSummary.textContent = "No date/time chosen yet.";
+      nextToStep4.disabled = true;
+      if (step3BookingSummary) step3BookingSummary.style.display = "none";
+      return;
+    }
+
+    selectedDateText.textContent = `Selected date: ${ymd(bookingDate)} (Tech availability: ${techInfo})`;
+
+    // No time
+    if (!bookingTime) {
+      scheduleSummary.textContent = `Date: ${ymd(bookingDate)} — Time: (not selected)`;
+      nextToStep4.disabled = true;
+      if (step3BookingSummary) step3BookingSummary.style.display = "none";
+      return;
+    }
+
+    // Date + time chosen
+    scheduleSummary.textContent = `Date: ${ymd(bookingDate)} — Time: ${bookingTime}`;
+    nextToStep4.disabled = false;
+
+    if (step3BookingSummary) step3BookingSummary.style.display = "block";
+
+    if (step3SummaryService) step3SummaryService.textContent = selectedService ? selectedService.name : "";
+    if (step3SummaryStaff) step3SummaryStaff.textContent = selectedStaff ? `${selectedStaff.name} (${selectedStaff.role})` : "";
+    if (step3SummaryPrice) step3SummaryPrice.textContent = selectedService ? `$${selectedService.price}` : "";
+    if (step3SummaryDuration) step3SummaryDuration.textContent = selectedService ? selectedService.duration : "";
+    if (step3SummaryDate) step3SummaryDate.textContent = ymd(bookingDate);
+    if (step3SummaryTime) step3SummaryTime.textContent = bookingTime;
+  }
+
+  // IMPORTANT: bind events
+  timeSelect.addEventListener("change", (e) => {
+    bookingTime = e.target.value || "";
+    updateSummary();
+  });
+
+  calPrev.onclick = () => {
+    view.setMonth(view.getMonth() - 1);
+    renderCalendar();
+  };
+
+  calNext.onclick = () => {
+    view.setMonth(view.getMonth() + 1);
+    renderCalendar();
+  };
+
+  // IMPORTANT: initial render
+  renderCalendar();
+  updateSummary();
+}
 
 //I made these utility functions available globally for team developers
 window.getBookingData = getBookingData;
