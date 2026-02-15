@@ -414,6 +414,7 @@ function goToStep3() {
     updateStepDisplay();
     updateProgressBar();
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    initStep3Calendar();
     
     /**
      * CONTINUE THE WORK TEAM:
