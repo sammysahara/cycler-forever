@@ -3,172 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go5 - Online Grocery Store</title>
+    <title>Cycler Forever - where you go to keep the wheels spinning</title>
+    
+    <!-- link to Bootstrap5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- link to Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- customization using CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <!-- our title and navigation bar will be in the header -->
-    <header>
-        <div class="header-container">
-            <h1 class="store-name">Go5!</h1>
-            <nav>
-                <button id="nav-customer" class="nav-btn active">Customer Info</button>
-                <button id="nav-products" class="nav-btn">Products</button>
-                <button id="nav-cart" class="nav-btn">Cart <span id="cart-count">(0)</span></button>
-            </nav>
-            <div id="breadcrumbs" class="breadcrumbs"></div>
+    <!-- header part-->
+    <header class="bg-dark text-white py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <img src="photoss/logo.jpg" alt="Cycler Forever Logo" class="img-fluid" style="max-height: 80px;">
+                </div>
+                <div class="col-md-6">
+                    <h1 class="h3 mb-0">Cycler Forever</h1>
+                    <p class="mb-0 small">Bicycle Repair & Maintenance</p>
+                </div>
+                <div class="col-md-3 text-md-end">
+                    <p class="mb-0"><i class="bi bi-geo-alt-fill"></i> 123 Bike Lane, Ottawa, ON</p>
+                    <p class="mb-0"><i class="bi bi-clock-fill"></i> Mon-Sat: 9AM-6PM</p>
+                    <p class="mb-0"><i class="bi bi-telephone-fill"></i> (613) 555-BIKE</p>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- main content -->
-    <main>
-        <!-- customer page -->
-        <section id="customer-section" class="page-section active">
-            <div class="container">
-                <h2>Welcome to Go5!</h2>
-                <p class="section-description">Please tell us about your dietary preferences so we can personalize your shopping experience.</p>
-                
-                <div class="customer-form">
-                    <div class="form-group">
-                        <h3>Dietary Restrictions</h3>
-                        <!-- we will use checkboxes for the dietary restrictions, and for the preferences-->
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="vegetarian" name="dietary">
-                                <span>I am vegetarian (no meat or fish)</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="gluten-free" name="dietary">
-                                <span>I have gluten intolerance (no wheat products)</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="lactose-free" name="dietary">
-                                <span>I am lactose intolerant (no dairy products)</span>
-                            </label>
-                        </div>
+    <!-- content part -->
+    <main class="container my-5">
+        <!-- we're using a div for the progress bar of course-->
+        <div class="row mb-4">
+            <div class="col">
+                <div class="progress" style="height: 30px;">
+                    <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" 
+                         role="progressbar" 
+                         style="width: 20%;" 
+                         aria-valuenow="20" 
+                         aria-valuemin="0" 
+                         aria-valuemax="100">
+                        Step 1: Select the service you need
                     </div>
-
-                    <div class="form-group">
-                        <h3>Product Preferences</h3>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="organic" name="preference">
-                                <span>I prefer organic products</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="local" name="preference">
-                                <span>I prefer locally sourced products</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="eco-friendly" name="preference">
-                                <span>I prefer eco-friendly packaging</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- the slider that allows users to select the price range of individual products-->
-                    <div class="form-group">
-                        <h3>Price Range of Each Product</h3>
-                        <div class="price-slider-container">
-                            <div class="price-labels">
-                                <span>$0</span>
-                                <span id="price-range-value">$0 - $25</span>
-                                <span>$25</span>
-                            </div>
-                            <div class="slider-wrapper">
-                                <input type="range" id="price-range" min="0" max="25" step="0.5" value="25" class="price-slider">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <h3>Accessibility Options</h3>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="large-text">
-                                <span>Enable larger text (for better readability)</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <button id="save-preferences" class="btn-primary">Save Preferences</button>
+                </div>
+                <div class="d-flex justify-content-between mt-2 small text-muted">
+                    <span id="step1Label" class="fw-bold text-primary">1. Choose Service</span>
+                    <span id="step2Label">2. Select Staff</span>
+                    <!-- HERE IS WHERE YOU GUYS CAN WORK ON STEP 3 TO 5...-->
+                    <span id="step3Label">3. Schedule & Details</span>
+                    <span id="step4Label">4. Contact Information</span>
+                    <span id="step5Label">5. Submit</span>
                 </div>
             </div>
-        </section>
-        <!--products page-->
-        <section id="products-section" class="page-section">
-            <div class="container">
-                <h2>Products</h2>
-                <p class="section-description"> Browse items matched to your preferences (To change your preferences, go back to Custmer Info)</p>
+        </div>
 
-                <!--filtering / searching option -->
-                <div class="products-toolbar">
-                    <input id="product-search" class="search-input" type="text" placeholder="Search products"/>
-                    <select id="category-filter" class="select-input">
-                        <option value="all">All categories</option>
-                        <option value="fruit">Fruit</option>
-                        <option value="vegetable">Vegetable</option>
-                        <option value="dairy">Dairy</option>
-                        <option value="pantry">Pantry</option>
-                        <option value="bakery">Bakery</option>
-                        <option value="meat">Meat</option>
-                        <option value="frozen">Frozen</option>
-                        <option value="protein">Protein</option>
-                        <option value="grain">Grain</option>
-                        <option value="seafood">Seafood</option>
-                    </select>
-                    <button id="reset-filters" class="btn-secondary" type="button">Reset</button>
+        <!-- service selection part -->
+        <div id="step1" class="step-section">
+            <h2 class="mb-4">
+                <i class="bi bi-bicycle"></i> Step 1: Choose Your Service
+            </h2>
+            <p class="lead mb-4">Select the repair or maintenance service you need. Each service includes a free diagnostic check.</p>
+            
+            <div class="row g-4" id="serviceCards">
+                <!-- each card will represent one service, functionality made with JavaScript-->
+            </div>
+
+            <div class="mt-4 p-3 bg-light rounded" id="serviceSelectionSummary" style="display: none;">
+                <h5><i class="bi bi-check-circle-fill text-success"></i> You selected:</h5>
+                <p class="mb-0" id="selectedServiceText"></p>
+            </div>
+
+            <div class="mt-4">
+                <button id="nextToStep2" class="btn btn-primary btn-lg" disabled>
+                    Next: Select Staff <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- next up is selecting the staff for the service -->
+        <div id="step2" class="step-section" style="display: none;">
+            <h2 class="mb-4">
+                <i class="bi bi-people-fill"></i> Step 2: Choose Your Technician
+            </h2>
+            <p class="lead mb-4">Select one of our certified technicians based on their expertise and availability.</p>
+            
+            <div class="row g-4" id="staffCards">
+                <!-- each staff memeber will also have a card -->
+            </div>
+
+            <div class="mt-4 p-3 bg-light rounded" id="staffSelectionSummary" style="display: none;">
+                <h5><i class="bi bi-check-circle-fill text-success"></i> Your booking summary:</h5>
+                <ul class="mb-0">
+                    <li><strong>Service:</strong> <span id="summaryService"></span></li>
+                    <li><strong>Technician:</strong> <span id="summaryStaff"></span></li>
+                    <li><strong>Price:</strong> <span id="summaryPrice"></span></li>
+                    <li><strong>Duration:</strong> <span id="summaryDuration"></span></li>
+                </ul>
+            </div>
+
+            <div class="mt-4 d-flex gap-2">
+                <button id="backToStep1" class="btn btn-secondary btn-lg">
+                    <i class="bi bi-arrow-left"></i> Back to Services
+                </button>
+                <button id="nextToStep3" class="btn btn-primary btn-lg" disabled>
+                    Continue to Scheduling <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- next up is selecting the time/date -->
+        <div id="step3" class="step-section" style="display: none;">
+            <h2 class="mb-4">
+                <i class="bi bi-calendar-check"></i> Step 3: Choose Date & Time
+            </h2>
+            <div class="row g-4">
+                <div class="col-12 col-lg-7">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Pick a date</h5>
+                            
+                            <!-- Calendar UI -->
+                             <div class="dropdown-menu d-block position-static p-2 mx-auto shadow rounded-3 w-340px">
+                                <div class="d-grid gap-1">
+                                    <div class="cal">
+                                        <div class="cal-month align-items-center">
+                                            <button class="btn cal-btn" type="button" id="calPrev" aria-label="Previous month">
+                                                <i class="bi bi-chevron-left"></i>
+                                            </button>
+                                            <strong class="cal-month-name" id="calMonthLabel"></strong>
+                                            <button class="btn cal-btn" type="button" id="calNext" aria-label="Next month">
+                                                <i class="bi bi-chevron-right"></i>
+                                            </button>
+                                        </div>
+                                        <div class="cal-weekdays text-body-secondary">
+                                            <div class="cal-weekday">Sun</div>
+                                            <div class="cal-weekday">Mon</div>
+                                            <div class="cal-weekday">Tue</div>
+                                            <div class="cal-weekday">Wed</div>
+                                            <div class="cal-weekday">Thu</div>
+                                            <div class="cal-weekday">Fri</div>
+                                            <div class="cal-weekday">Sat</div>
+                                        </div>
+                                        <div class="cal-days" id="calDays"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3 small text-muted" id="selectedDateText">
+                                No date selected (Technician availability will apply)
+                            </div>
+                            <label class="form-label mt-3" for="timeSelect">Pick a time</label>
+                            <select class="form-select" id="timeSelect" disabled>
+                                <option value="" selected disabled>Select a time</option>
+                            </select>
+                            <div class="mt-3 p-2 bg-light rounded small">
+                                <div class="fw-semibold">Selected:</div>
+                                <div id="scheduleSummary">No date/time chosen yet.</div>
+                            </div>
+                            
+                            <div class="mt-4 d-flex gap-2">
+                                <button id="backToStep2" class="btn btn-secondary btn-lg" type="button">
+                                    <i class="bi bi-arrow-left"></i> Back to Staff Selection
+                                </button>
+                                
+                                
+                                <button id="nextToStep4" class="btn btn-primary btn-lg" type="button" disabled>
+                                    Next: Contact Info <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
+                <div class="col-12 col-lg-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Reschedule & Cancellation</h5>
+                            <div class="alert alert-warning mb-0">
+                                <ul class="mb-0 ps-3">
+                                    <li>Free changes up to 24 hours before the appointment.</li>
+                                    <li>Changes within 24 hours may incur a late fee.</li>
+                                    <li>No-shows may require a deposit for future bookings.</li>
+                                </ul>
+                            </div>
+                            <div class="small text-muted mt-2">
+                                Dates shown depend on the technician you selected.
+                            </div>
+                            <div class="mt-4 p-3 bg-light rounded" id="step3BookingSummary" style="display: none;">
+                                <h5><i class="bi bi-check-circle-fill text-success"></i> Your booking summary:</h5>
+                                <ul class="mb-0">
+                                    <li><strong>Service:</strong> <span id="step3SummaryService"></span></li>
+                                    <li><strong>Technician:</strong> <span id="step3SummaryStaff"></span></li>
+                                    <li><strong>Price:</strong> <span id="step3SummaryPrice"></span></li>
+                                    <li><strong>Duration:</strong> <span id="step3SummaryDuration"></span></li>
+                                    <li><strong>Date:</strong> <span id="step3SummaryDate"></span></li>
+                                    <li><strong>Time:</strong> <span id="step3SummaryTime"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
 
-                <div id="products-grid" class="products-grid">
+        <!-- next is entering contact info -->
+        <div id="step4" class="step-section" style="display: none;">
+            <h2 class="mb-4">
+                <i class="bi bi-people-fill"></i> Step 4: Enter Contact Information
+            </h2>
+            <p class="lead mb-4">Enter your contact information here. You must provide email or phone</p>
+            
+            <div class="col-md-6">
+                <label for="contactFirstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="contactFirstName" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="contactLastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="contactLastName" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="contactEmail" class="form-label">
+                    Email
+                </label>
+                <input type="email" class="form-control" id="contactEmail">
+            </div>
+
+            <div class="col-md-6">
+                <label for="contactPhone" class="form-label">
+                    Phone Number
+                </label>
+                <input type="tel" class="form-control" id="contactPhone">
+                <div id="passwordHelpInline" class="form-text">
+                    Must not include area code, brackets, or dashes.
                 </div>
             </div>
-        </section>
-        <!-- for individual products -->
-        <section id="product-detail-section" class="page-section">
-            <div id="product-detail"></div>
-        </section>
-        <!-- our cart page -->
-        <section id="cart-section" class="page-section">
-            <div class="container">
-                <h2>Your Cart</h2>
-                <p class="section-description">Review your items and total price</p>
 
-                <div id="cart-content" class="cart-content"></div>
-                
-                <div class="tip-section">
-                    <h3>Add a Tip!</h3>
-                    <label class="radio-label">
-                        <input type="radio" name="tip" value="0" checked>
-                        <span>0%</span>
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="tip" value="10">
-                        <span>10%</span>
-                    </label>  
-                    <label class="radio-label">
-                        <input type="radio" name="tip" value="15">
-                        <span>15%</span>
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="tip" value="20">
-                        <span>20%</span>
-                    </label>                                    
+            <div class="col-12">
+                <label for="contactNotes" class="form-label">
+                    Additional Notes (optional)
+                </label>
+                <textarea class="form-control" id="contactNotes" rows="3"></textarea>
+            </div>
+
+            <div class="mt-4 d-flex gap-2">
+                <button id="backToStep3" class="btn btn-secondary btn-lg">
+                    <i class="bi bi-arrow-left"></i> Back to Scheduling
+                </button>
+                <button id="nextToStep5" class="btn btn-primary btn-lg" disabled>
+                    Continue to Submit <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- last is to submit -->
+        <div id="step5" class="step-section" style="display: none;">
+        <h2 class="mb-4">
+            <i class="bi bi-check2-circle"></i> Step 5: Review & Submit
+        </h2>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title mb-3">Booking Summary</h5>
+
+                <ul class="mb-3">
+                    <li><strong>Service:</strong> <span id="finalService"></span></li>
+                    <li><strong>Technician:</strong> <span id="finalStaff"></span></li>
+                    <li><strong>Price:</strong> <span id="finalPrice"></span></li>
+                    <li><strong>Duration:</strong> <span id="finalDuration"></span></li>
+                    <li><strong>Date:</strong> <span id="finalDate"></span></li>
+                    <li><strong>Time:</strong> <span id="finalTime"></span></li>
+                    <li><strong>Name:</strong> <span id="finalName"></span></li>
+                    <li><strong>Email:</strong> <span id="finalEmail"></span></li>
+                    <li><strong>Phone:</strong> <span id="finalPhone"></span></li>
+                </ul>
+
+                <div class="alert alert-info small mb-0">
+                    Submitting will confirm your appointment.
                 </div>
-                <div class="cart-summary">
-                    <button id="clear-cart" class="clear-items-link" type="button">Clear Cart</button>
-                    <div class="cart-total-right">
-                        <span class="total-labe"l>Total :</span>
-                        <span id="cart-total" class="total-amount">$0.00</span>
-                    </div>
-                </div>                  
+            </div>
+        </div>
+
+        <div class="mt-4 d-flex gap-2">
+            <button id="backToStep4" class="btn btn-secondary btn-lg" type="button">
+            <i class="bi bi-arrow-left"></i> Back to Contact Info
+            </button>
+            <button id="submitBooking" class="btn btn-success btn-lg" type="button">
+            Submit Booking <i class="bi bi-send"></i>
+            </button>
+        </div>
+
+        <div class="mt-3" id="submitResult" style="display:none;"></div>
+        </div>
+
+
     </main>
 
-    <!-- we will put the signature here, Sahara knows what to write on it -->
-    <footer>
-        <p>Webite designed by Steven Feng, Salma Ahmed, and Sahara Sammy</p>
+    <!-- footer section (missing the signature of the team) -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Cycler Forever</h5>
+                    <p class="small">Let us keep your bicycle wheel spinning until the world ends</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p class="small mb-0">123 Biking Lane, Ottawa, ON K2A 0A4</p>
+                    <p class="small mb-0">Phone: (613) 555 (2453)</p>
+                    <p class="small mb-0">Email: info@cyclerForever.ca</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Policies</h5>
+                    <p class="small mb-0">
+                        <i class="bi bi-check-circle"></i> Free cancellation up to 24 hours before appointment<br>
+                        <i class="bi bi-check-circle"></i> Easy rescheduling available<br>
+                        <i class="bi bi-check-circle"></i> Repairs come with a 15-day warranty
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <!-- Bootstrap5 JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- and custom JavaScript -->
     <script src="scripts.js"></script>
 </body>
 </html>

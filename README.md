@@ -1,8 +1,11 @@
-# SEG3125-lab2-Group05
-This is lab 3
+# SEG3125-lab4-Group05
+This is lab 4
 
-The lab consists on improving lab 2, taking the gorcery store and upgrade the UI and additional features it must have
+The team has chosen to make a website for a Bicycle Repair Shop, containing services such as brake tuning, flat fix, steering fix, upgrades, replacements, full maintenance
+As the requirements stated, each service will display the estimated time for completion and clear prices, the store supports multiple types to bicycles and offers photos for reliability
+The website follows the procedure: 1. Pick a service, 2. Pick staff 3. Pick date/time, 4. Enter Contact information, 5. Confirm
+The website uses a progress indicator as feedback for the user
 
-The website is published in Sahara Sammy's GitHub Pages at https://sammysahara.github.io/GO5-grocery/, and the contributions can be seen on her repository or mine (Stfeng333)
+The contributions were equal, the repository will be posted in the GitHub classroom of the course, and the personal repository is Stfeng333... https://github.com/Stfeng333/SEG3125--labs-group05 
 
-The preferences and dietary restrictions will save to your browser's local storage. To delete this, press F12, go to Application, then on the left panel look for Storage, then open Local storage, and you will be able to delete the saved preferences.
+The website itself is published by Sahara

@@ -1,721 +1,325 @@
-/* essential colors that we will use */
+/*root variables for yellow & grey theme */
 :root {
-  --primary-color: #2ecc71;
-  --primary-dark: #27ae60;
-  --secondary-color: #3498db;
-  --accent-color: #e74c3c;
-  --dark-bg: #2c3e50;
-  --light-bg: #ecf0f1;
-  --text-dark: #2c3e50;
-  --text-light: #7f8c8d;
-  --border-color: #bdc3c7;
-  --success-color: #27ae60;
+    --primary-yellow: #FFC107;
+    --primary-yellow-dark: #FFA000;
+    --primary-yellow-light: #FFECB3;
+    --grey-dark: #424242;
+    --grey-medium: #757575;
+    --grey-light: #E0E0E0;
+    --grey-lighter: #F5F5F5;
+    --white: #FFFFFF;
+    --success-green: #4CAF50;
+    --error-red: #F44336;
 }
 
-/* global syling for the body */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/*global styles */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text-dark);
-  background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--grey-lighter);
+    color: var(--grey-dark);
 }
 
-/* enlarging accessibility, optional requirement */
-body.large-text {
-  font-size: 20px;
-}
-
-body.large-text h1 {
-  font-size: 3rem;
-}
-
-body.large-text h2 {
-  font-size: 2.5rem;
-}
-
-body.large-text h3 {
-  font-size: 2rem;
-}
-
-body.large-text .product-name {
-  font-size: 1.6rem;
-}
-
-body.large-text .btn-primary,
-body.large-text .btn-secondary,
-body.large-text .btn-add-cart,
-body.large-text .nav-btn {
-  font-size: 1.3rem;
-  padding: 15px 30px;
-}
-
-/* header styling and navigation */
-header {
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--primary-dark)
-  );
-  color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.header-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem 2rem;
-}
-
-.store-name {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/*the next part is for the navigation buttons*/
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.nav-btn {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 2px solid white;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.nav-btn:hover {
-  background-color: white;
-  color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.nav-btn.active {
-  background-color: white;
-  color: var(--primary-color);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#cart-count {
-  font-weight: 700;
-}
-
-/* breadcrumbs nav */
-.breadcrumbs {
-  margin: 20px;
-  font-size: 0.95rem;
-  color: var(white);
-}
-
-.breadcrumbs span {
-  cursor: pointer;
-}
-
-.breadcrumbs span:hover {
-  text-decoration: underline;
-}
-
-/* putting down here the regular main content */
-main {
-  min-height: calc(100vh - 250px);
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.page-section {
-  display: none;
-  animation: fadeIn 0.5s ease;
-}
-
-.page-section.active {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-h2 {
-  font-size: 2.5rem;
-  color: var(--dark-bg);
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.section-description {
-  text-align: center;
-  font-size: 1.1rem;
-  color: var(--text-light);
-  margin-bottom: 2rem;
-}
-
-/* down here we will make the styles for the cutomer page */
-.customer-form {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.form-group {
-  margin-bottom: 2.5rem;
-}
-
-.form-group h3 {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  border-bottom: 2px solid var(--light-bg);
-  padding-bottom: 0.5rem;
-}
-
-.checkbox-group,
-.radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.checkbox-label,
-.radio-label {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  background-color: var(--light-bg);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* hover effect for checkbox and radio labels */
-.checkbox-label:hover,
-.radio-label:hover {
-  background-color: #d5dbdb;
-  transform: translateX(5px);
-}
-
-/* styling the checkbox and radio inputs */
-.checkbox-label input,
-.radio-label input {
-  width: 20px;
-  height: 20px;
-  margin-right: 1rem;
-  cursor: pointer;
-}
-
-/* styling the labels text */
-.checkbox-label span,
-.radio-label span {
-  font-size: 1.1rem;
-}
-
-/* styling the buttons */
+/*I will override Bootstrap primary color */
 .btn-primary {
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--primary-dark)
-  );
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
-  width: 100%;
-  margin-top: 1rem;
+    background-color: var(--primary-yellow);
+    border-color: var(--primary-yellow);
+    color: var(--grey-dark);
+    font-weight: 600;
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4);
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--primary-yellow-dark);
+    border-color: var(--primary-yellow-dark);
+    color: var(--grey-dark);
 }
 
-/* styling the slide that controls price ranges */
-.price-slider-container {
-  padding: 1rem;
-  background-color: var(--light-bg);
-  border-radius: 8px;
+.btn-primary:disabled {
+    background-color: var(--grey-light);
+    border-color: var(--grey-light);
+    color: var(--grey-medium);
+    cursor: not-allowed;
 }
 
-.price-labels {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  color: var(--text-dark);
-}
-
-#price-range-value {
-  font-weight: 600;
-  color: var(--primary-color);
-  font-size: 1.2rem;
-}
-
-.slider-wrapper {
-  width: 100%;
-}
-
-.price-slider {
-  width: 100%;
-  height: 8px;
-  border-radius: 5px;
-  background: linear-gradient(
-    to right,
-    var(--primary-color),
-    var(--primary-dark)
-  );
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-}
-
-.price-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: white;
-  border: 3px solid var(--primary-color);
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.price-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-  box-shadow: 0 3px 10px rgba(46, 204, 113, 0.4);
-}
-
-.price-slider::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: white;
-  border: 3px solid var(--primary-color);
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.price-slider::-moz-range-thumb:hover {
-  transform: scale(1.2);
-  box-shadow: 0 3px 10px rgba(46, 204, 113, 0.4);
-}
-
-/* the signature section will be a footer with a simple design*/
-footer {
-  background-color: var(--dark-bg);
-  color: white;
-  text-align: center;
-  padding: 2rem;
-  margin-top: 3rem;
-}
-
-footer p {
-  font-size: 1rem;
-}
-
-/* now we have to make the site responsive */
-@media (max-width: 768px) {
-  .header-container {
-    padding: 1rem;
-  }
-
-  .store-name {
-    font-size: 2rem;
-  }
-
-  nav {
-    gap: 0.5rem;
-  }
-
-  .nav-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .container {
-    padding: 1rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  .customer-form {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .store-name {
-    font-size: 1.5rem;
-  }
-
-  .nav-btn {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.85rem;
-  }
-}
-/* Products toolbar */
-.products-toolbar {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem auto 2rem;
-  max-width: 900px;
-}
-
-.search-input,
-.select-input {
-  padding: 0.9rem 1rem;
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  font-size: 1rem;
-  min-width: 220px;
-  outline: none;
-}
-
-.search-input:focus,
-.select-input:focus {
-  border-color: var(--primary-color);
-}
-
-/* Secondary button (for Reset) */
 .btn-secondary {
-  background-color: white;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  padding: 0.9rem 1.4rem;
-  border-radius: 25px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s ease;
+    background-color: var(--grey-medium);
+    border-color: var(--grey-medium);
+    color: var(--white);
 }
 
-.btn-secondary:hover {
-  background-color: var(--primary-color);
-  color: white;
-  transform: translateY(-2px);
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: var(--grey-dark);
+    border-color: var(--grey-dark);
 }
 
-/* Products grid + cards */
-.products-grid {
+/*styling progress bar */
+.progress {
+    background-color: var(--grey-light);
+    border-radius: 15px;
+}
+
+.progress-bar {
+    background-color: var(--primary-yellow);
+    color: var(--grey-dark);
+    font-weight: bold;
+}
+
+/*service and staff cards*/
+.service-card,
+.staff-card {
+    border: 2px solid var(--grey-light);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: var(--white);
+    height: 100%;
+}
+
+.service-card:hover,
+.staff-card:hover {
+    border-color: var(--primary-yellow);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+    transform: translateY(-5px);
+}
+
+.service-card.selected,
+.staff-card.selected {
+    border-color: var(--primary-yellow);
+    background-color: var(--primary-yellow-light);
+    box-shadow: 0 6px 16px rgba(255, 193, 7, 0.4);
+}
+
+.service-card .card-img-top,
+.staff-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--grey-light);
+}
+
+.card-title {
+    color: var(--grey-dark);
+    font-weight: bold;
+}
+
+.price-badge {
+    background-color: var(--primary-yellow);
+    color: var(--grey-dark);
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.duration-badge {
+    background-color: var(--grey-light);
+    color: var(--grey-dark);
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+/*staff expertise certification badges */
+.expertise-badge {
+    background-color: var(--primary-yellow-light);
+    color: var(--grey-dark);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    margin: 2px;
+    display: inline-block;
+}
+
+/*text colors */
+.text-primary {
+    color: var(--primary-yellow-dark) !important;
+}
+
+/*focus states help us to ensure accessibility for keyboard users*/
+.service-card:focus,
+.staff-card:focus,
+.btn:focus {
+    outline: 3px solid var(--primary-yellow);
+    outline-offset: 2px;
+}
+
+/*labels*/
+#step1Label,
+#step2Label,
+#step3Label,
+#step4Label,
+#step5Label {
+    transition: all 0.3s ease;
+}
+
+.step-active {
+    color: var(--primary-yellow-dark) !important;
+    font-weight: bold !important;
+}
+
+/*icons used in the cards*/
+.card-body i {
+    color: var(--primary-yellow-dark);
+}
+.btn i {
+    color: inherit !important;
+}
+
+/*styling the Alert */
+.alert-info {
+    background-color: var(--primary-yellow-light);
+    border-color: var(--primary-yellow);
+    color: var(--grey-dark);
+}
+
+/*styling the tooltip*/
+.tooltip-inner {
+    background-color: var(--grey-dark);
+    color: var(--white);
+}
+
+.tooltip .arrow::before {
+    border-top-color: var(--grey-dark);
+}
+
+/*let's make some changes to the cards on smaller screens to ensure they look good*/
+@media (max-width: 768px) {
+    .service-card .card-img-top,
+    .staff-card .card-img-top {
+        height: 150px;
+    }
+    
+    header .col-md-3,
+    header .col-md-6,
+    header .col-md-3 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+/*loading state*/
+.btn-loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn-loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid var(--grey-dark);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*staff initials display */
+.staff-initials {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--primary-yellow);
+    color: var(--grey-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 3px solid var(--primary-yellow-dark);
+    margin: 0 auto 10px;
+}
+
+/*details of service*/
+.service-details {
+    font-size: 0.9rem;
+    color: var(--grey-medium);
+}
+
+.service-details li {
+    padding: 4px 0;
+}
+
+/*putting a grey background for smooth look*/
+.bg-dark {
+    background-color: var(--grey-dark) !important;
+}
+
+/*success indicator*/
+.bi-check-circle-fill {
+    color: var(--success-green);
+}
+
+/*and card selection indicator*/
+.card-check {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    color: var(--success-green);
+    display: none;
+}
+
+.selected .card-check {
+    display: block;
+}
+/* Bootstrap example calendar CSS */
+.cal-month,
+.cal-days,
+.cal-weekdays {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.5rem;
-}
-
-.product-card {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease;
-}
-
-.product-image-btn {
-  border: none;
-  padding: 0;
-  background: none;
-  width: 100%;
-  cursor: pointer;
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-}
-
-.product-image {
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-  background: var(--light-bg);
-}
-
-.product-body {
-  padding: 1.1rem 1.1rem 1.3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.product-name {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--text-dark);
-}
-
-.product-meta {
-  display: flex;
-  justify-content: space-between;
+  grid-template-columns: repeat(7, 1fr);
   align-items: center;
-  gap: 0.8rem;
-  color: var(--text-light);
-  font-size: 0.95rem;
 }
-
-.product-price {
-  font-weight: 900;
-  color: var(--dark-bg);
-  font-size: 1.1rem;
+.cal-month-name {
+  grid-column-start: 2;
+  grid-column-end: 7;
+  text-align: center;
 }
-
-.product-detail-wrapper {
+.cal-weekday,
+.cal-btn {
   display: flex;
+  flex-shrink: 0;
+  align-items: center;
   justify-content: center;
-  padding: 40px 20px;
-}
-
-.product-detail-card {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-  max-width: 900px;
-  width: 100%;
-}
-
-.product-detail-image img {
-  width: 320px;
-  max-width: 100%;
-  border-radius: 12px;
-}
-
-.product-detail-info {
-  flex: 1;
-}
-
-.badge {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 800;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  background: var(--light-bg);
-  color: var(--text-dark);
-}
-
-.badge.organic {
-  border: 2px solid var(--primary-color);
-}
-
-.badge.gf {
-  border: 2px solid var(--secondary-color);
-}
-
-.btn-add-cart {
-  margin-top: 0.2rem;
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 0.85rem 1rem;
-  font-size: 1rem;
-  font-weight: 800;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.btn-add-cart:hover {
-  filter: brightness(0.95);
-  transform: translateY(-2px);
-}
-/* Cart */
-.cart-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 900px;
-  margin: 0 auto 1.5rem;
-}
-
-.cart-item {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: 90px 1fr auto;
-  gap: 1rem;
-  align-items: center;
-}
-
-.cart-item img {
-  width: 90px;
-  height: 70px;
-  object-fit: cover;
-  border-radius: 12px;
-  background: var(--light-bg);
-}
-
-.cart-item-title {
-  font-weight: 900;
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-}
-
-.cart-item-sub {
-  color: var(--text-light);
-  font-size: 0.95rem;
-}
-
-.cart-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-end;
-}
-
-.qty-controls {
-  display: flex;
-  gap: 0.6rem;
-  align-items: flex-start;
-}
-
-.qty-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
-}
-
-.qty-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  border: 2px solid var(--border-color);
-  background: white;
-  font-weight: 900;
-  cursor: pointer;
-}
-
-.qty-value {
-  font-weight: 900;
-}
-
-.remove-btn {
-  border: none;
-  background: transparent;
-  color: var(--accent-color);
-  font-weight: 900;
+  height: 3rem;
   padding: 0;
-  font-size: 0.85rem;
-  cursor: pointer;
 }
-.cart-item-count {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0.75rem 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-dark);
+.cal-btn:not([disabled]) {
+  font-weight: 500;
+  color: var(--bs-emphasis-color);
 }
-.cart-summary {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--border-color);
-  background: transparent;
-  box-shadow: none;
-  border-radius: 0;
+.cal-btn:hover,
+.cal-btn:focus {
+  background-color: var(--grey-dark);
 }
-/* clear cart button */
-.clear-items-link {
-  background-color: var(--accent-color);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  color: white;
-  font-size: 1rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 700;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+.cal-btn[disabled] {
+  border: 0;
+  opacity: .5;
+}
+.w-340px {
+  width: 340px;
 }
 
-.clear-items-link:hover {
-  background-color: #c0392b;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+/* Needed so buttons look like “date boxes” */
+.cal-btn {
+  border-radius: .75rem;
 }
 
-/* Right side total */
-.cart-total-right {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  justify-content: flex-end;
-  text-align: right;
+/* Highlight selected day */
+.cal-btn.selected {
+  background-color: var(--primary-yellow);
+  border: 2px solid var(--primary-yellow-dark);
 }
 
-.total-label {
-  color: var(--text-dark);
-  font-weight: 900;
-}
 
-.total-amount {
-  font-weight: 900;
-  font-size: 1.1rem;
-  color: var(--text-dark);
-}
-
-@media (max-width: 600px) {
-  .cart-item {
-    grid-template-columns: 70px 1fr;
-    grid-template-rows: auto auto;
-  }
-  .cart-controls {
-    grid-column: 1 / -1;
-    align-items: flex-start;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
